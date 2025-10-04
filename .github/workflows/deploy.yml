@@ -18,23 +18,31 @@ jobs:
       - name: Setup Flutter SDK
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.7.2'
-          channel: 'stable'
+          flutter-version: "3.7.2"
+          channel: "stable"
           cache: true
 
-      # 依存関係の取得
+      # 依存関係の取得（メインプロジェクト）
       - name: Install dependencies
         run: flutter pub get
 
+      # 依存関係の取得（Widgetbook）
+      - name: Install Widgetbook dependencies
+        run: |
+          cd lib/widgetbook
+          flutter pub get
+
       # Widgetbookアプリのビルド（/screens用）
       - name: Build Widgetbook app
-        run: flutter build web -t lib/widgetbook/lib/main.dart --web-renderer canvaskit --base-href /pd_share_sample/screens/
+        run: |
+          cd lib/widgetbook
+          flutter build web --web-renderer canvaskit --base-href /pd_share_sample/screens/
 
       # Widgetbookのビルド成果物を一時ディレクトリに移動
       - name: Copy Widgetbook build to temp
         run: |
           mkdir -p deploy/screens
-          cp -r build/web/* deploy/screens/
+          cp -r lib/widgetbook/build/web/* deploy/screens/
 
       # フロー確認用アプリのビルド（/flow用）
       - name: Build main app
