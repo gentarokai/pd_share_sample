@@ -36,7 +36,7 @@ jobs:
       - name: Build Widgetbook app
         run: |
           cd lib/widgetbook
-          flutter build web --web-renderer canvaskit --base-href /pd_share_sample/screens/
+          flutter build web --base-href /pd_share_sample/screens/
 
       # Widgetbookのビルド成果物を一時ディレクトリに移動
       - name: Copy Widgetbook build to temp
@@ -46,7 +46,7 @@ jobs:
 
       # フロー確認用アプリのビルド（/flow用）
       - name: Build main app
-        run: flutter build web -t lib/main.dart --web-renderer canvaskit --base-href /pd_share_sample/flow/
+        run: flutter build web -t lib/main.dart --base-href /pd_share_sample/flow/
 
       # メインアプリのビルド成果物を一時ディレクトリに移動
       - name: Copy main app build to temp
