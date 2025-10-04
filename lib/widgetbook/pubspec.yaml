@@ -1,0 +1,26 @@
+name: widgetbook_workspace
+description: "A new Flutter project."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  pd_share_sample:
+    path: ../../
+  flutter:
+    sdk: flutter
+  widgetbook: ^3.17.1
+  widgetbook_annotation: ^3.7.0
+  accessibility_tools: ^2.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  widgetbook_generator: ^3.17.0
+  build_runner: ^2.9.0
+
+flutter:
+  uses-material-design: true
